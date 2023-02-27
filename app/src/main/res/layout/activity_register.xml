@@ -33,14 +33,14 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:padding="10dp">
 
             <EditText
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Nombre completo"
                 android:inputType="textPersonName"
@@ -54,7 +54,7 @@
             <EditText
                 android:id="@+id/userUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Nombre de usuario"
                 android:inputType="textPersonName"
@@ -68,7 +68,7 @@
             <EditText
                 android:id="@+id/userMail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Correo Electrónico"
                 android:inputType="textEmailAddress"
@@ -82,7 +82,7 @@
             <EditText
                 android:id="@+id/userPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
@@ -96,7 +96,7 @@
             <EditText
                 android:id="@+id/userBirthday"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Fecha de nacimiento"
                 android:inputType="date"
