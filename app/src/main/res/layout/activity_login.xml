@@ -83,6 +83,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/clickableText"
                     android:layout_width="match_parent"
+                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:text="Aún no tienes una cuenta?"
                     android:gravity="center"

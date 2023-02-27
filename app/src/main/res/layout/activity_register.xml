@@ -124,6 +124,7 @@
 
                     android:layout_marginTop="10dp"
                     android:id="@+id/clickableText"
+                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ya tienes una cuenta?"
