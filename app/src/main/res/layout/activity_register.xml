@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Nombre completo"
+                android:hint="Nombre completo*"
                 android:inputType="textPersonName"
                 android:background="@drawable/shape_text_field"
                 android:layout_marginBottom="10dp"
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Nombre de usuario"
+                android:hint="Nombre de usuario*"
                 android:inputType="textPersonName"
                 android:background="@drawable/shape_text_field"
                 android:layout_marginBottom="10dp"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Correo Electrónico"
+                android:hint="Correo Electrónico*"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/shape_text_field"
                 android:layout_marginBottom="10dp"
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Contraseña"
+                android:hint="Contraseña*"
                 android:inputType="textPassword"
                 android:background="@drawable/shape_text_field"
                 android:layout_marginBottom="10dp"
@@ -93,13 +93,16 @@
                 android:textColorHint="@color/white"
                 android:textSize="15dp"/>
 
+
             <EditText
-                android:id="@+id/userBirthday"
+                android:id="@+id/userBirth"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Fecha de nacimiento"
                 android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
                 android:background="@drawable/shape_text_field"
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
@@ -127,7 +130,7 @@
                     android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ya tienes una cuenta?"
+                    android:text="¿Ya tienes una cuenta?"
                     android:gravity="center"
                     android:clickable="true"/>
 
