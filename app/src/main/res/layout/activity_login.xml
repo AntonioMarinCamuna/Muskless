@@ -76,8 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enviar"
-                    android:backgroundTint="@color/white"
-                    android:textColor="#434141"/>
+                    android:background="@drawable/pressed_button_shape"
+                    android:textColor="@drawable/button_text_color"/>
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
-                    android:text="Aún no tienes una cuenta?"
+                    android:text="¿Aún no tienes una cuenta?"
                     android:gravity="center"
                     android:clickable="true"/>
 

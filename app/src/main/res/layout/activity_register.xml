@@ -120,8 +120,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enviar"
-                    android:backgroundTint="@color/white"
-                    android:textColor="#434141"/>
+                    android:background="@drawable/pressed_button_shape"
+                    android:textColor="@drawable/button_text_color"/>
 
                 <TextView
 

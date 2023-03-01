@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class AvatarChoosingActivity extends AppCompatActivity {
+public class        AvatarChoosingActivity extends AppCompatActivity {
 
     private ImageButton avatar1;
     private ImageButton avatar2;
