@@ -53,7 +53,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public ViewHolderMessages onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_message_row, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_message_row, parent, false);
 
         return new ViewHolderMessages(view);
     }

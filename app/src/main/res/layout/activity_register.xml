@@ -33,7 +33,6 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -48,7 +47,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#8a8787"
                 android:textSize="15dp"/>
 
             <EditText
@@ -62,7 +61,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#8a8787"
                 android:textSize="15dp"/>
 
             <EditText
@@ -76,7 +75,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#8a8787"
                 android:textSize="15dp"/>
 
             <EditText
@@ -90,7 +89,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#8a8787"
                 android:textSize="15dp"/>
 
 
@@ -107,7 +106,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#8a8787"
                 android:textSize="15dp"/>
 
             <LinearLayout

@@ -18,7 +18,8 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES);
+        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES_USERS);
+        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES_MESSAGES);
 
     }
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#555353">
+    android:background="#555353"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -12,21 +13,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:id="@+id/appHeaderLogin"
-            android:layout_marginTop="60dp"
+            android:id="@+id/containerHeader"
+
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="vertical">
+            android:layout_marginTop="100dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/logoImg"
+            <LinearLayout
+
+                android:id="@+id/appHeaderLogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo_muskless" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/logoImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/logo_muskless" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
 
@@ -34,7 +47,7 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -42,29 +55,29 @@
                 android:id="@+id/userUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_text_field"
                 android:ems="10"
                 android:hint="Nombre de usuario"
                 android:inputType="textPersonName"
-                android:background="@drawable/shape_text_field"
-                android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="#8a8787"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/userPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_text_field"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
-                android:background="@drawable/shape_text_field"
-                android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="#8a8787"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,25 +88,24 @@
                     android:id="@+id/submitButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enviar"
                     android:background="@drawable/pressed_button_shape"
-                    android:textColor="@drawable/button_text_color"/>
+                    android:text="Enviar"
+                    android:textColor="@drawable/button_text_color" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/clickableText"
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
-                    android:text="¿Aún no tienes una cuenta?"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
                     android:gravity="center"
-                    android:clickable="true"/>
+                    android:text="¿Aún no tienes una cuenta?"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
         </LinearLayout>
 
 
-
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
