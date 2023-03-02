@@ -30,6 +30,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView user;
         TextView txt;
         ImageView img;
+        TextView date;
 
         public ViewHolderMessages(@NonNull View itemView) {
             super(itemView);
@@ -37,6 +38,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             user = (TextView) itemView.findViewById(R.id.usrNameDisplay);
             txt = (TextView) itemView.findViewById(R.id.usrTxtDisplay);
             img = itemView.findViewById(R.id.usrMessageImg);
+            date = (TextView) itemView.findViewById(R.id.dateText);
 
         }
 
@@ -44,6 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             user.setText(message.getUser());
             txt.setText(message.getTxt());
+            date.setText(message.getDate());
             img.setImageResource(R.drawable.avatar_cinco);
 
         }

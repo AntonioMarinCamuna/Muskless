@@ -15,9 +15,11 @@ public class EstructuraBBDD {
     //Table messages
     public static final String TABLE_MESSAGES = "publishedMessages";
     public static final String COLUMN_ID_MESSAGE = "messageId";
+    public static final String COLUMN_USER_NAME = "userName";
     public static final String COLUMN_ID_USER = "userId";
     public static final String COlUMN_MESSAGE = "message";
     public static final String COLUMN_MESSAGE_DATE = "messageDate";
+    public static final String COLUMN_USER_AVATAR = "userAvatar";
 
     public static final String SQL_CREATE_ENTRIES_USERS =
             "CREATE TABLE " + EstructuraBBDD.TABLE_USERS + " (" +
@@ -33,6 +35,8 @@ public class EstructuraBBDD {
             "CREATE TABLE " + EstructuraBBDD.TABLE_MESSAGES + " (" +
                     EstructuraBBDD.COLUMN_ID_MESSAGE + " INTEGER PRIMARY KEY," +
                     EstructuraBBDD.COlUMN_MESSAGE + " TEXT NOT NULL," +
+                    EstructuraBBDD.COLUMN_USER_NAME + " TEXT NOT NULL," +
+                    EstructuraBBDD.COLUMN_USER_AVATAR + " TEXT NOT NULL," +
                     EstructuraBBDD.COLUMN_MESSAGE_DATE + " TEXT NOT NULL," +
                     EstructuraBBDD.COLUMN_ID_USER + " INTEGER," +
                     "FOREIGN KEY (" + COLUMN_ID_USER + ") REFERENCES "

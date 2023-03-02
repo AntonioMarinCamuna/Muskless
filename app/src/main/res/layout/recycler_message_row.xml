@@ -53,7 +53,7 @@
                         android:id="@+id/dateText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="01/03/2023"
+                        android:text=""
                         android:textAlignment="textEnd"
                         android:textColor="#CABBBBBB"/>
 
