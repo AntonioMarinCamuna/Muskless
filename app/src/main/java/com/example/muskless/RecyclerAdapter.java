@@ -1,6 +1,8 @@
 package com.example.muskless;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +20,14 @@ import java.util.ArrayList;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolderMessages> {
 
     ArrayList<Message> messageList;
+    private Context c;
+    private String messageUser;
 
-    public RecyclerAdapter(ArrayList<Message> messageList){
+    public RecyclerAdapter(ArrayList<Message> messageList, Context c, String messageUser){
 
         this.messageList = messageList;
+        this.c = c;
+        this.messageUser = messageUser;
 
     }
 
@@ -47,7 +53,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             user.setText(message.getUser());
             txt.setText(message.getTxt());
             date.setText(message.getDate());
-            img.setImageResource(R.drawable.avatar_cinco);
+
+            String avatar = message.getImg().substring(0, message.getImg().length() - 4);
+
+            String uri = "@drawable/" + avatar;
+            int imageResource = c.getResources().getIdentifier(uri, "drawable", c.getPackageName());
+            Drawable res = c.getResources().getDrawable(imageResource);
+
+            img.setImageDrawable(res);
 
         }
     }
@@ -74,9 +87,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return messageList.size();
     }
 
-    public static Drawable getImage(Context c, String ImageName) {
+    public static int getImage(Context c, String ImageName) {
 
-        return c.getResources().getDrawable(c.getResources().getIdentifier(ImageName, "drawable", c.getPackageName()));
+        return c.getResources().getIdentifier(ImageName, "drawable", c.getPackageName());
 
     }
 

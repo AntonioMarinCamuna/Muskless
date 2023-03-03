@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(cursor.moveToFirst()){
 
                     Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
+                    i.putExtra("currentUser", userText.getText().toString());
                     startActivity(i);
 
                 } else {

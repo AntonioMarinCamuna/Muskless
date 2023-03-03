@@ -30,7 +30,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messagesRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#555353">
 
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -56,6 +57,22 @@
         android:background="@drawable/footer_shape"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <LinearLayout
+            android:padding="18dp"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="310dp">
+
+            <ImageView
+                android:id="@+id/profileImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

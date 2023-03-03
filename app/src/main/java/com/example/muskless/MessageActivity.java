@@ -17,20 +17,17 @@ public class MessageActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        Button btn = findViewById(R.id.btn);
-        TextView txt = findViewById(R.id.txt);
+        Button btn = findViewById(R.id.sendBtn);
+        TextView txt = findViewById(R.id.txtMessage);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String a = txt.getText().toString();
-                String b = txt.getText().toString();
 
                 Intent i = new Intent();
                 i.putExtra("a", a);
-                i.putExtra("b", b);
-                i.putExtra("c", "avatar_uno.png");
                 setResult(1, i);
 
                 MessageActivity.super.onBackPressed();

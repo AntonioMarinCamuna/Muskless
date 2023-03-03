@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent">
+    android:background="#555353">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="1dp"
-        app:cardBackgroundColor="#333331">
+        app:cardBackgroundColor="#555353">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,18 +34,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp">
 
                     <TextView
                         android:id="@+id/usrNameDisplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="a"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
+
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -55,7 +57,8 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:textAlignment="textEnd"
-                        android:textColor="#CABBBBBB"/>
+                        android:textColor="#CABBBBBB"
+                        android:layout_marginRight="15dp"/>
 
                 </LinearLayout>
 
@@ -66,7 +69,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"/>
 
             </LinearLayout>
 
