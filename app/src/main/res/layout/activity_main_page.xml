@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/white">
+            android:background="#9e9e9e">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -87,6 +87,7 @@
                     android:id="@+id/mainPageButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selection_shape"
                     app:srcCompat="@android:drawable/stat_notify_chat" />
 
             </LinearLayout>

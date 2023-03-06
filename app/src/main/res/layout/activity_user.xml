@@ -31,7 +31,7 @@
     <LinearLayout
         android:id="@+id/userInfoContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:background="#555353"
         android:orientation="horizontal">
 
@@ -91,6 +91,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -182,7 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/white">
+        android:background="#9e9e9e">
 
 
     </androidx.recyclerview.widget.RecyclerView>
