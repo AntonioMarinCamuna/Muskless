@@ -34,11 +34,11 @@ public class MainPageActivity extends AppCompatActivity {
     public static final int REQUEST_CODE = 1;
     private static final String TAG = "MainPageActivity";
 
-    private String data_1;
-    private String data_2;
-    private String data_3;
+    private String data_1; //User
+    private String data_2; //Message
+    private String data_3; //Avatar
     private String data_4;
-    int data_5;
+    int data_5;            //Id
 
     private String currentUser;
 
@@ -68,7 +68,7 @@ public class MainPageActivity extends AppCompatActivity {
 
                     data_4 = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-                    data_5 = 1;
+                    getUserData(currentUser);
 
                     RecyclerView rv = findViewById(R.id.messagesRecycler);
 
@@ -103,7 +103,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         messageList = new ArrayList<Message>();
 
-        floatingButton = findViewById(R.id.floatingButton);
+        floatingButton = findViewById(R.id.floatingMessage);
 
         currentUser = getIntent().getStringExtra("currentUser");
 
@@ -188,7 +188,8 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainPageActivity.this, LoginActivity.class);
+                Intent i = new Intent(MainPageActivity.this, UserActivity.class);
+                i.putExtra("currentUser", currentUser);
                 startActivity(i);
 
             }
@@ -213,6 +214,20 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
         return str;
+
+    }
+
+    public void getUserData(String currentUser){
+
+        BaseDatosHelper dbHelper = new BaseDatosHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT " +  EstructuraBBDD.COLUMN_ID + " FROM "
+                + EstructuraBBDD.TABLE_USERS + " WHERE " + EstructuraBBDD.COLUMN_USERNAME + " = '" + currentUser + "'", null);
+
+        cursor.moveToFirst();
+
+        data_5 = cursor.getInt(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_ID));
 
     }
 

@@ -3,19 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#555353">
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
-        app:cardBackgroundColor="#555353">
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="3dp"
+        app:cardBackgroundColor="#555353"
+        app:cardCornerRadius="10dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="100dp"
-            android:background="@android:color/transparent">
+            android:background="@android:color/transparent"
+            android:minHeight="80dp">
 
             <LinearLayout
                 android:layout_width="80dp"
@@ -26,16 +31,15 @@
                 <ImageView
                     android:id="@+id/usrMessageImg"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/avatar_cuatro" />
+                    android:layout_height="40dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,23 +50,22 @@
                         android:id="@+id/usrNameDisplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="a"
-                        android:textSize="17sp"
-
+                        android:text="placeHolder"
                         android:textColor="@color/white"
+
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/dateText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:layout_marginRight="15dp"
+                        android:text="placeHolder"
                         android:textAlignment="textEnd"
-                        android:textColor="#CABBBBBB"
-                        android:layout_marginRight="15dp"/>
+                        android:textColor="#CABBBBBB" />
 
                 </LinearLayout>
-
 
 
                 <TextView
@@ -70,9 +73,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
+                    android:text="placeHolder"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"/>
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
