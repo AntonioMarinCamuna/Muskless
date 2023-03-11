@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="placeHolder"
+                    android:text="@string/fullname_hint"
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Fecha de nacimiento: "
+                    android:text="@string/birthday_hint"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -123,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:text="placeHolder"
                     android:textColor="#CABBBBBB" />
 
@@ -137,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Correo Electrónico "
+                    android:text="@string/email_hint"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -166,7 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Historial de mensajes"
+            android:text="@string/message_history"
             android:textColor="#CABBBBBB" />
 
     </LinearLayout>

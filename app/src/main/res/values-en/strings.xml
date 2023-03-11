@@ -7,17 +7,17 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="send_button">Publicar</string>
-    <string name="login_button">Iniciar Sesión</string>
-    <string name="register_button">Registrarse</string>
-    <string name="user_hint">Nombre de usuario</string>
-    <string name="password_hint">Contraseña</string>
-    <string name="email_hint">Correo electrónico</string>
-    <string name="fullname_hint">Nombre completo</string>
-    <string name="birthday_hint">Fecha de nacimiento</string>
-    <string name="message_history">Historial de mensajes</string>
-    <string name="register_message">¿Aún no tienes cuenta? Regístrate</string>
-    <string name="login_message">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="send_button">Publish</string>
+    <string name="login_button">Log In</string>
+    <string name="register_button">Register</string>
+    <string name="user_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="fullname_hint">Full name</string>
+    <string name="birthday_hint">Birthday</string>
+    <string name="message_history">Message history</string>
+    <string name="register_message">Don´t have an account? Register</string>
+    <string name="login_message">Already have an account? Log In</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

@@ -60,7 +60,7 @@ public class MainPageActivity extends AppCompatActivity {
                 if(i != null){
 
                     data_1 = currentUser;
-                    data_2 = i.getStringExtra("a");
+                    data_2 = i.getStringExtra("message");
 
                     String avatar = currentUserAvatar(currentUser);
 

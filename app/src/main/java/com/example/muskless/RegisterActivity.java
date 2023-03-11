@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private Button submitButton;
@@ -86,20 +88,55 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(!cursor.moveToFirst()){
 
-                    Intent i = new Intent(RegisterActivity.this, AvatarChoosingActivity.class);
+                    if(nameText.getText().toString().equals("") || passwordText.getText().toString().equals("") || userText.getText().toString().equals("") || mailText.getText().toString().equals("") || birthText.getText().toString().equals("")){
 
-                    i.putExtra("name", nameText.getText().toString());
-                    i.putExtra("username", userText.getText().toString());
-                    i.putExtra("password", passwordText.getText().toString());
-                    i.putExtra("email", mailText.getText().toString());
-                    i.putExtra("birthday", birthText.getText().toString());
+                        Context context = getApplicationContext();
+                        CharSequence text = "";
 
-                    startActivity(i);
+                        if(Locale.getDefault().getLanguage() == "en"){
+
+                            text = "All fields must be filled!";
+
+                        } else {
+
+                            text = "¡Debes rellenar todos los campos!";
+
+                        }
+
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
+                    } else {
+
+                        Intent i = new Intent(RegisterActivity.this, AvatarChoosingActivity.class);
+
+                        i.putExtra("name", nameText.getText().toString());
+                        i.putExtra("username", userText.getText().toString());
+                        i.putExtra("password", passwordText.getText().toString());
+                        i.putExtra("email", mailText.getText().toString());
+                        i.putExtra("birthday", birthText.getText().toString());
+
+                        startActivity(i);
+
+                    }
 
                 } else {
 
                     Context context = getApplicationContext();
-                    CharSequence text = "¡Ese usuario ya existe!";
+                    CharSequence text = "";
+
+                    if(Locale.getDefault().getLanguage() == "en"){
+
+                        text = "User is already registered!";
+
+                    } else {
+
+                        text = "¡Ese usuario ya existe!";
+
+                    }
+
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);

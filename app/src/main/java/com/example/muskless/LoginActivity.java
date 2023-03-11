@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button submitButton;
@@ -66,7 +68,18 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
 
                     Context context = getApplicationContext();
-                    CharSequence text = "Datos incorrectos!";
+                    CharSequence text = "";
+
+                    if(Locale.getDefault().getLanguage() == "en"){
+
+                        text = "Wrong data!";
+
+                    } else {
+
+                        text = "¡Datos erróneos!";
+
+                    }
+
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
