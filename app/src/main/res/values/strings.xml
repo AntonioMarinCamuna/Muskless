@@ -18,6 +18,7 @@
     <string name="message_history">Historial de mensajes</string>
     <string name="register_message">¿Aún no tienes cuenta? Regístrate</string>
     <string name="login_message">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="logout_message">Cerrar sesión</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

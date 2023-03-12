@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,17 +42,20 @@ public class UserActivity extends AppCompatActivity {
         getUserData(currentUser);
 
         ImageView mainPageButton = findViewById(R.id.mainPageButton);
+        ImageView infoButton = findViewById(R.id.infoButton);
 
         TextView userFullNameText = findViewById(R.id.userFullName);
         TextView userUsernameText = findViewById(R.id.currentUserName);
         TextView userBirthdayText = findViewById(R.id.userBirth);
         TextView userMailText = findViewById(R.id.userMail);
         ImageView userAvatar = findViewById(R.id.userAvatar);
-
         ImageView avatarImg = findViewById(R.id.profileImg);
+        Button logOut = findViewById(R.id.logOutButton);
+
+        String user_username = "@" + currentUser;
 
         userFullNameText.setText(userName);
-        userUsernameText.setText(currentUser);
+        userUsernameText.setText(user_username);
         userBirthdayText.setText(userBirth);
         userMailText.setText(userMail);
 
@@ -130,6 +134,28 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(UserActivity.this, NewspaperActivity.class);
+                i.putExtra("currentUser", currentUser);
+                i.putExtra("currentAvatar", currentAvatar);
+                startActivity(i);
+
+            }
+        });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(UserActivity.this, LoginActivity.class);
+                startActivity(i);
+
+            }
+        });
+
     }
 
     public void getUserData(String currentUser){
@@ -169,5 +195,10 @@ public class UserActivity extends AppCompatActivity {
 
         return str;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Bloquear el botón de atrás
     }
 }

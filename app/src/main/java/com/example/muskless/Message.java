@@ -2,12 +2,16 @@ package com.example.muskless;
 
 public class Message {
 
+    //Definimos los datos que contendrá cada objeto Message.
     private String user;
     private String txt;
     private String img;
     private String date;
     private int idUser;
 
+    /*
+    * Constructor de la clase.
+    * */
     public Message(String user, String txt, String img, String date, int idUser) {
         this.txt = txt;
         this.user = user;
@@ -17,6 +21,7 @@ public class Message {
 
     }
 
+    //Getters y Setters de los datos de cada mensaje.
     public String getUser() {
         return user;
     }
