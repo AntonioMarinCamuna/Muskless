@@ -1,5 +1,8 @@
 package com.example.muskless;
 
+/*
+ * Definimos los importes necesarios para el funcionamiento de la aplicación.
+ * */
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,10 +22,14 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolderMessages> {
 
-    ArrayList<Message> messageList;
+    //Definimos los elementos empleados en el activity.
+    private ArrayList<Message> messageList;
     private Context c;
     private String messageUser;
 
+    /*
+    * Constructor de la clase RecyclerAdapter.
+    * */
     public RecyclerAdapter(ArrayList<Message> messageList, Context c, String messageUser){
 
         this.messageList = messageList;
@@ -31,36 +38,43 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
+    /*
+    * Clase ViewHolderMessages que extiende de RecyclerView.ViewHolder.
+    * */
     public class ViewHolderMessages extends RecyclerView.ViewHolder {
 
-        TextView user;
-        TextView txt;
-        ImageView img;
-        TextView date;
+        //Definimos los elementos empleados en la clase.
+        private TextView user;
+        private TextView txt;
+        private ImageView img;
+        private TextView date;
+        private Context c;
 
+        /*
+        * Constructor de la clase ViewHolderMessages.
+        * */
         public ViewHolderMessages(@NonNull View itemView) {
             super(itemView);
 
+            //Instanciamos los elementos del activity.
             user = (TextView) itemView.findViewById(R.id.usrNameDisplay);
             txt = (TextView) itemView.findViewById(R.id.usrTxtDisplay);
             img = itemView.findViewById(R.id.usrMessageImg);
             date = (TextView) itemView.findViewById(R.id.dateText);
+            c = RecyclerAdapter.this.c.getApplicationContext();
 
         }
 
+        /*
+        * Método bind encargado de "setear" la información del recycler adapter.
+        * */
         public void bind(Message message) {
 
             user.setText(message.getUser());
             txt.setText(message.getTxt());
             date.setText(message.getDate());
 
-            String avatar = message.getImg().substring(0, message.getImg().length() - 4);
-
-            String uri = "@drawable/" + avatar;
-            int imageResource = c.getResources().getIdentifier(uri, "drawable", c.getPackageName());
-            Drawable res = c.getResources().getDrawable(imageResource);
-
-            img.setImageDrawable(res);
+            getImage(message, c, img);
 
         }
     }
@@ -81,15 +95,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
-
     @Override
     public int getItemCount() {
         return messageList.size();
     }
 
-    public static int getImage(Context c, String ImageName) {
+    /*
+    * Método encargado de asignar al mensaje la imagen del usuario actual.*/
+    public static void getImage(Message message, Context c, ImageView img) {
 
-        return c.getResources().getIdentifier(ImageName, "drawable", c.getPackageName());
+        String avatar = message.getImg().substring(0, message.getImg().length() - 4);
+
+        String uri = "@drawable/" + avatar;
+        int imageResource = c.getResources().getIdentifier(uri, "drawable", c.getPackageName());
+        Drawable res = c.getResources().getDrawable(imageResource);
+
+        img.setImageDrawable(res);
 
     }
 

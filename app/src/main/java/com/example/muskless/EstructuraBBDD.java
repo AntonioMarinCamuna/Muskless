@@ -2,7 +2,7 @@ package com.example.muskless;
 
 public class EstructuraBBDD {
 
-    //Table users
+    //Tabla users.
     public static final String TABLE_USERS = "registeredUsers";
     public static final String COLUMN_ID = "userId";
     public static final String COLUMN_NAME = "userName";
@@ -12,7 +12,7 @@ public class EstructuraBBDD {
     public static final String COLUMN_BIRTHDAY = "userBirthday";
     public static final String COLUMN_AVATAR = "userAvatar";
 
-    //Table messages
+    //Tabla messages.
     public static final String TABLE_MESSAGES = "publishedMessages";
     public static final String COLUMN_ID_MESSAGE = "messageId";
     public static final String COLUMN_USER_NAME = "userName";
@@ -21,6 +21,7 @@ public class EstructuraBBDD {
     public static final String COLUMN_MESSAGE_DATE = "messageDate";
     public static final String COLUMN_USER_AVATAR = "userAvatar";
 
+    //Querys encargadas de la creación de las tablas.
     public static final String SQL_CREATE_ENTRIES_USERS =
             "CREATE TABLE " + EstructuraBBDD.TABLE_USERS + " (" +
                     EstructuraBBDD.COLUMN_ID + " INTEGER PRIMARY KEY," +
@@ -42,10 +43,9 @@ public class EstructuraBBDD {
                     "FOREIGN KEY (" + COLUMN_ID_USER + ") REFERENCES "
                     + TABLE_USERS + " (" + COLUMN_ID + "))";
 
+
+    //Query encargada de borrar las tablas de la BD;
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + EstructuraBBDD.TABLE_USERS;
-
-
-
 
 }
