@@ -196,7 +196,7 @@ public class MainPageActivity extends AppCompatActivity {
     * */
     public void defaultMessageSet(){
 
-        //Instanciamos el RecyclerView
+        //Instanciamos el RecyclerView.
         RecyclerView rv = findViewById(R.id.messagesRecycler);
 
         //"Configuramos" el layout manager del RecyclerView.

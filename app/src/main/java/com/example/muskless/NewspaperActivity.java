@@ -31,7 +31,7 @@ public class NewspaperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newspaper);
 
-        getSupportActionBar().hide();
+        getSupportActionBar().hide(); //Escondemos la barra que aparece por defecto.
 
         //Obtenemos la información pasada a través del intent.
         currentUser = getIntent().getStringExtra("currentUser");

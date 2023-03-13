@@ -2,6 +2,7 @@ package com.example.muskless;
 
 public class User {
 
+    //Datos relativos a un usuario registrado en la app.
     private String userName;
     private String userUsername;
     private String userMail;
@@ -9,34 +10,18 @@ public class User {
     private String userBirthday;
     private String userAvatar;
 
+    /*
+    * Constructor de la clase encargado de asignar la información del usuario a las variables de datos.
+    * */
     public User(String userName, String userUsername, String userMail, String userPassword, String userBirthday, String userAvatar) {
         this.userName = userName;
         this.userUsername = userUsername;
         this.userMail = userMail;
         this.userPassword = userPassword;
 
-        if(userBirthday.equals("")){
-
-            this.userBirthday = "";
-
-        } else {
-
-            this.userBirthday = userBirthday;
-
-        }
-
-        if(userAvatar.equals("")){
-
-            this.userAvatar = "";
-
-        } else {
-
-            this.userAvatar = userAvatar;
-
-        }
-
     }
 
+    //Getters y Setters de los datos de cada usuario.
     public String getUserName() {
         return userName;
     }

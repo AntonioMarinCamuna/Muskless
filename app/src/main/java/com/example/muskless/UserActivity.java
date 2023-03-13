@@ -1,5 +1,8 @@
 package com.example.muskless;
 
+/*
+ * Definimos los importes necesarios para el funcionamiento de la aplicación.
+ * */
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,111 +21,71 @@ import java.util.ArrayList;
 
 public class UserActivity extends AppCompatActivity {
 
-    String currentUser;
+    /*
+     * Definimos los elementos que se usarán de forma global.
+     * */
+    private ImageView mainPageButton;
+    private ImageView infoButton;
+    private TextView userFullNameText;
+    private TextView userUsernameText;
+    private TextView userBirthdayText;
+    private TextView userMailText;
+    private ImageView user_Avatar;
+    private ImageView avatarImg;
+    private Button logOut;
+
+    private String currentUser;
     int userId;
 
-    String userName;
-    String userBirth;
-    String userMail;
-    String userAvatar;
+    private String userName;
+    private String userBirth;
+    private String userMail;
+    private String userAvatar;
+    private String currentAvatar;
+    private String user_username;
 
-    ArrayList<Message> userMessageList;
+    private ArrayList<Message> userMessageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        getSupportActionBar().hide();
+        getSupportActionBar().hide(); //Escondemos la barra que aparece por defecto.
+
+        //Obtenemos la información pasada por el intent.
+        currentUser = getIntent().getStringExtra("currentUser");
+        getUserData(currentUser); //Llamada al método encargado de obtener de la BD la información
+                                  // relativa al usuario actual.
+
+        //Instanciamos todos los elementos del activity.
+        user_username = "@" + currentUser;
 
         userMessageList = new ArrayList<Message>();
 
-        currentUser = getIntent().getStringExtra("currentUser");
+        mainPageButton = findViewById(R.id.mainPageButton);
+        infoButton = findViewById(R.id.infoButton);
 
-        getUserData(currentUser);
-
-        ImageView mainPageButton = findViewById(R.id.mainPageButton);
-        ImageView infoButton = findViewById(R.id.infoButton);
-
-        TextView userFullNameText = findViewById(R.id.userFullName);
-        TextView userUsernameText = findViewById(R.id.currentUserName);
-        TextView userBirthdayText = findViewById(R.id.userBirth);
-        TextView userMailText = findViewById(R.id.userMail);
-        ImageView userAvatar = findViewById(R.id.userAvatar);
-        ImageView avatarImg = findViewById(R.id.profileImg);
-        Button logOut = findViewById(R.id.logOutButton);
-
-        String user_username = "@" + currentUser;
+        userFullNameText = findViewById(R.id.userFullName);
+        userUsernameText = findViewById(R.id.currentUserName);
+        userBirthdayText = findViewById(R.id.userBirth);
+        userMailText = findViewById(R.id.userMail);
+        user_Avatar = findViewById(R.id.userAvatar);
+        avatarImg = findViewById(R.id.profileImg);
+        logOut = findViewById(R.id.logOutButton);
 
         userFullNameText.setText(userName);
         userUsernameText.setText(user_username);
         userBirthdayText.setText(userBirth);
         userMailText.setText(userMail);
 
-        String currentAvatar = currentUserAvatar(currentUser);
-        String avatarNoExtension = currentAvatar.substring(0, currentAvatar.length() - 4);
+        userAvatarSetter(); //Llamada al método encargado de poner la imagen del usuario actual.
+        setUserMessages(); //Llamada la método encargado de mostrar el historial de mensajes del usuario.
 
-        String uri = "@drawable/" + avatarNoExtension;
-        int imageResource = getResources().getIdentifier(uri, "drawable", getPackageName());
-        Drawable res = getResources().getDrawable(imageResource);
-
-        userAvatar.setImageDrawable(res);
-        avatarImg.setImageDrawable(res);
-
-        RecyclerView rv = findViewById(R.id.messagesRecycler);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(UserActivity.this, LinearLayoutManager.VERTICAL, false);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        rv.setLayoutManager(layoutManager);
-
-        BaseDatosHelper dbHelper = new BaseDatosHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        Cursor cursor = db.rawQuery("SELECT " + EstructuraBBDD.COLUMN_USER_AVATAR + ", " + EstructuraBBDD.COlUMN_MESSAGE
-                + ", " + EstructuraBBDD.COLUMN_USER_NAME + ", " + EstructuraBBDD.COLUMN_MESSAGE_DATE + ", " + EstructuraBBDD.COLUMN_ID_USER + " FROM "
-                + EstructuraBBDD.TABLE_MESSAGES + " WHERE " + EstructuraBBDD.COLUMN_ID_USER + " like " + userId + "", null);
-
-        if(cursor.getCount() > 1){
-
-            cursor.moveToFirst();
-
-            while (!cursor.isAfterLast()){
-
-                String avatar = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_AVATAR));
-                String message = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COlUMN_MESSAGE));
-                String username = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_NAME));
-                String messageDate = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_MESSAGE_DATE));
-                int idUser = cursor.getInt(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_ID_USER));
-
-                Message m = new Message(username, message, avatar, messageDate, idUser);
-                userMessageList.add(m);
-
-                cursor.moveToNext();
-
-                RecyclerAdapter adapter = new RecyclerAdapter(userMessageList, getApplicationContext(), username);
-                rv.setAdapter(adapter);
-
-            }
-
-        } else if (cursor.getCount() == 1) {
-
-            cursor.moveToFirst();
-
-            String avatar = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_AVATAR));
-            String message = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COlUMN_MESSAGE));
-            String username = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_NAME));
-            String messageDate = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_MESSAGE_DATE));
-            int idUser = cursor.getInt(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_ID_USER));
-
-            Message m = new Message(username, message, avatar, messageDate, idUser);
-            userMessageList.add(m);
-
-            RecyclerAdapter adapter = new RecyclerAdapter(userMessageList, getApplicationContext(), username);
-            rv.setAdapter(adapter);
-
-        }
-
+        /*
+         * Definimos un setOnClickListener para la imagen/botón encargado de lanzar el activity de la
+         * página principal.
+         * */
         mainPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +97,10 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Definimos un setOnClickListener al "botón" de información que nos permitirá acceder a un
+         * activity donde se mostrará un periódico en base al idioma del dispositivo.
+         * */
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,6 +113,10 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Definimos un setOnClickListener para el botón "Cerrar sesión" del activity, esta será la
+        * única forma de volver al activity del login.
+        * */
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +129,95 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    /*
+     * Método encargado de mostrar por pantalla los mensajes ya enviados por el usuario cada vez
+     * que se acceda al activity.
+     * */
+    public void setUserMessages(){
+
+        //Instanciamos el RecyclerView.
+        RecyclerView rv = findViewById(R.id.messagesRecycler);
+
+        //"Configuramos" el layout manager del RecyclerView.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(UserActivity.this, LinearLayoutManager.VERTICAL, false);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        rv.setLayoutManager(layoutManager);
+
+        BaseDatosHelper dbHelper = new BaseDatosHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        //Con un cursor, buscamos en la base de datos la información relativa a cada mensaje enviado.
+        Cursor cursor = db.rawQuery("SELECT " + EstructuraBBDD.COLUMN_USER_AVATAR + ", " + EstructuraBBDD.COlUMN_MESSAGE
+                + ", " + EstructuraBBDD.COLUMN_USER_NAME + ", " + EstructuraBBDD.COLUMN_MESSAGE_DATE + ", " + EstructuraBBDD.COLUMN_ID_USER + " FROM "
+                + EstructuraBBDD.TABLE_MESSAGES + " WHERE " + EstructuraBBDD.COLUMN_ID_USER + " like " + userId + "", null);
+
+        if(cursor.getCount() > 1){ //Caso en el que el cursor devuelva mas de un resultado.
+
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()){
+
+                //Obtenemos cada dato extraido por el cursor.
+                String avatar = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_AVATAR));
+                String message = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COlUMN_MESSAGE));
+                String username = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_NAME));
+                String messageDate = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_MESSAGE_DATE));
+                int idUser = cursor.getInt(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_ID_USER));
+
+                //Instanciamos un nuevo objeto mensaje y lo añadimos a la lista.
+                Message m = new Message(username, message, avatar, messageDate, idUser);
+                userMessageList.add(m);
+
+                cursor.moveToNext(); //Pasamos al siguiente elemento del cursor.
+
+                RecyclerAdapter adapter = new RecyclerAdapter(userMessageList, getApplicationContext(), username);
+                rv.setAdapter(adapter);
+
+            }
+
+        } else if (cursor.getCount() == 1) { //Caso en el que el cursor devuelva un único resultado.
+
+            cursor.moveToFirst();
+
+            //Obtenemos cada dato extraido por el cursor.
+            String avatar = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_AVATAR));
+            String message = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COlUMN_MESSAGE));
+            String username = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_USER_NAME));
+            String messageDate = cursor.getString(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_MESSAGE_DATE));
+            int idUser = cursor.getInt(cursor.getColumnIndexOrThrow(EstructuraBBDD.COLUMN_ID_USER));
+
+            //Instanciamos un nuevo objeto mensaje y lo añadimos a la lista.
+            Message m = new Message(username, message, avatar, messageDate, idUser);
+            userMessageList.add(m);
+
+            RecyclerAdapter adapter = new RecyclerAdapter(userMessageList, getApplicationContext(), username);
+            rv.setAdapter(adapter);
+
+        }
+
+    }
+
+    /*
+     * Método encargado de asignar a la imagen de perfil el avatar del usuario.
+     * */
+    public void userAvatarSetter(){
+
+        currentAvatar = currentUserAvatar(currentUser);
+        String avatarNoExtension = currentAvatar.substring(0, currentAvatar.length() - 4);
+
+        String uri = "@drawable/" + avatarNoExtension;
+        int imageResource = getResources().getIdentifier(uri, "drawable", getPackageName());
+        Drawable res = getResources().getDrawable(imageResource);
+
+        user_Avatar.setImageDrawable(res);
+        avatarImg.setImageDrawable(res);
+
+    }
+
+    /*
+     * Método encargado de obtener toda la información del usuario que accede a su página del perfil.
+     * */
     public void getUserData(String currentUser){
 
         BaseDatosHelper dbHelper = new BaseDatosHelper(getApplicationContext());
@@ -177,6 +237,9 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    /*
+     * Método encargado de buscar en base de datos el String del nombre del avatar del usuario.
+     * */
     public String currentUserAvatar(String user){
 
         String str = "";
@@ -197,6 +260,9 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    /*
+     * Método sobreescrito que bloquear el botón de hacia atrás.
+     * */
     @Override
     public void onBackPressed() {
         //Bloquear el botón de atrás
